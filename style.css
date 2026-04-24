@@ -1160,9 +1160,50 @@ a:focus-visible, button:focus-visible {
 .ms-auto { margin-right: auto; }
 @media (max-width: 992px) {
     .desktop-only { display: none !important; }
-    .mobile-only { display: flex !important; width: 100%; border-radius: 8px; margin-bottom: 0px; background: rgba(255, 255, 255, 0.05); }
-    .tab-panel { padding: 15px; background: rgba(0,0,0,0.3); border-radius: 0 0 8px 8px; margin-bottom: 15px; }
-    .tab-btn.active { border-radius: 8px 8px 0 0; }
-    .tab-btn.mobile-only i.fa-chevron-down { transition: transform 0.3s; }
-    .tab-btn.mobile-only.active i.fa-chevron-down { transform: rotate(180deg); }
+    .services-tabs-container {
+        padding: 10px;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+    .mobile-only { 
+        display: flex !important; 
+        width: 100%; 
+        border-radius: 12px; 
+        margin-bottom: 12px; 
+        background: rgba(255, 255, 255, 0.03); 
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 18px 20px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    .tab-btn.mobile-only.active { 
+        border-radius: 12px 12px 0 0; 
+        margin-bottom: 0;
+        background: rgba(14, 165, 233, 0.1);
+        border-color: rgba(14, 165, 233, 0.3);
+        color: #fff;
+    }
+    .tab-btn.mobile-only.active i {
+        color: var(--color-accent);
+    }
+    .tab-panel { 
+        padding: 20px; 
+        background: rgba(14, 165, 233, 0.03); 
+        border: 1px solid rgba(14, 165, 233, 0.3);
+        border-top: none;
+        border-radius: 0 0 12px 12px; 
+        margin-bottom: 12px; 
+    }
+    .tab-btn.mobile-only i.fa-chevron-down { 
+        transition: transform 0.3s; 
+        font-size: 1rem;
+        opacity: 0.6;
+    }
+    .tab-btn.mobile-only.active i.fa-chevron-down { 
+        transform: rotate(180deg); 
+        opacity: 1;
+    }
+    .tab-panel h3 { display: none; }
+    .panel-icon { display: none; }
 }
