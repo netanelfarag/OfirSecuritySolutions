@@ -195,10 +195,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tabBtns.length > 0) {
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-tab');
+                const isActive = btn.classList.contains('active');
+                
+                if (isActive && window.innerWidth <= 992) {
+                    btn.classList.remove('active');
+                    document.getElementById(targetId).classList.remove('active');
+                    return;
+                }
+                
                 tabBtns.forEach(b => b.classList.remove('active'));
                 tabPanels.forEach(p => p.classList.remove('active'));
-                btn.classList.add('active');
-                const targetId = btn.getAttribute('data-tab');
+                
+                document.querySelectorAll(`.tab-btn[data-tab="${targetId}"]`).forEach(b => b.classList.add('active'));
                 document.getElementById(targetId).classList.add('active');
             });
         });
