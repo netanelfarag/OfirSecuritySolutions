@@ -34,14 +34,72 @@
     <main>
         <section id="hero" class="hero-section">
             <div class="hero-background"></div>
-            <div class="hero-content">
-                <h1 class="main-title">OFIR SECURITY SOLUTIONS</h1>
-                <p class="slogan">פתרונות אבטחה, שקט נפשי.</p>
-                <div class="btn-container animate-slide-up-3">
-                    <a href="#contact" class="cta-button">
-                        <span class="btn-text">צור קשר</span>
-                        <span class="btn-glow"></span>
-                    </a>
+            <div class="hero-content-wrapper container">
+                <div class="hero-text-side">
+                    <h1 class="main-title">OFIR SECURITY SOLUTIONS</h1>
+                    <p class="slogan">פתרונות אבטחה, שקט נפשי.</p>
+                    <div class="btn-container animate-slide-up-3">
+                        <a href="#contact" class="cta-button">
+                            <span class="btn-text">צור קשר</span>
+                            <span class="btn-glow"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual-side">
+                    <svg viewBox="0 0 500 500" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="dome-camera-svg">
+                        <defs>
+                            <linearGradient id="domeMountGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#333" />
+                                <stop offset="100%" stop-color="#111" />
+                            </linearGradient>
+                            <linearGradient id="domeLensGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0ea5e9" />
+                                <stop offset="100%" stop-color="#020617" />
+                            </linearGradient>
+                            <radialGradient id="domeGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="rgba(14, 165, 233, 0.4)" />
+                                <stop offset="100%" stop-color="rgba(14, 165, 233, 0)" />
+                            </radialGradient>
+                            <radialGradient id="glassReflection" cx="30%" cy="30%" r="60%">
+                                <stop offset="0%" stop-color="rgba(255,255,255,0.4)" />
+                                <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+                            </radialGradient>
+                            <clipPath id="dome-glass-clip">
+                                <path d="M 50 200 A 200 200 0 0 0 450 200 Z" />
+                            </clipPath>
+                        </defs>
+
+                        <!-- Base Mount (Ceiling/Wall) -->
+                        <ellipse cx="250" cy="180" rx="220" ry="40" fill="url(#domeMountGrad)" stroke="#444" stroke-width="2"/>
+                        <path d="M 30 180 L 30 200 C 30 220, 470 220, 470 200 L 470 180 Z" fill="#0a0a0a" stroke="#222" stroke-width="2"/>
+                        
+                        <!-- Internal Mechanics (Clipped by Dome Glass) -->
+                        <g clip-path="url(#dome-glass-clip)">
+                            <rect x="0" y="0" width="500" height="500" fill="#050505" />
+
+                            <!-- Moving Camera Head -->
+                            <g class="dome-camera-head">
+                                <circle cx="250" cy="270" r="100" fill="#151515" stroke="#2a2a2a" stroke-width="2"/>
+                                <!-- Side brackets -->
+                                <rect x="130" y="240" width="30" height="60" rx="5" fill="#222" />
+                                <rect x="340" y="240" width="30" height="60" rx="5" fill="#222" />
+                                
+                                <!-- Lens assembly -->
+                                <g class="dome-lens-zoom">
+                                    <circle cx="250" cy="270" r="70" fill="#0a0a0a" stroke="#333" stroke-width="4"/>
+                                    <circle cx="250" cy="270" r="50" fill="url(#domeLensGrad)"/>
+                                    <ellipse cx="230" cy="245" rx="15" ry="8" fill="#fff" opacity="0.6" transform="rotate(-30 230 245)"/>
+                                    <circle cx="250" cy="270" r="25" fill="url(#domeGlow)"/>
+                                    <!-- Red LED -->
+                                    <circle cx="295" cy="235" r="5" fill="#ff0000" class="dome-recording-led"/>
+                                </g>
+                            </g>
+                        </g>
+
+                        <!-- Glass Dome Cover -->
+                        <path d="M 50 200 A 200 200 0 0 0 450 200 Z" fill="url(#glassReflection)"/>
+                        <path d="M 50 200 A 200 200 0 0 0 450 200 Z" fill="none" stroke="#555" stroke-width="3" opacity="0.5"/>
+                    </svg>
                 </div>
             </div>
             <div class="scroll-indicator animate-bounce">
