@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofir Security Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="cursor-glow"></div>
+    <nav class="navbar animate-fade-in-down">
+        <div class="nav-container">
+            <a href="#" class="logo-container">
+                <img src="img/logo.PNG" alt="Ofir Security Solutions Logo" class="logo">
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link">ראשי</a></li>
+                <li><a href="#services" class="nav-link">שירותים</a></li>
+                <li><a href="#gallery" class="nav-link">גלריה</a></li>
+                <li><a href="#about" class="nav-link">אודות</a></li>
+                <li><a href="#contact" class="nav-link">צור קשר</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <h1 class="main-title">OFIR SECURITY SOLUTIONS</h1>
+                <p class="slogan">פתרונות אבטחה, שקט נפשי.</p>
+                <div class="btn-container animate-slide-up-3">
+                    <a href="#contact" class="cta-button">
+                        <span class="btn-text">צור קשר</span>
+                        <span class="btn-glow"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="scroll-indicator animate-bounce">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- אזורים ריקים כרגע עבור המקטעים הבאים כדי שהגלילה תעבוד -->
+        <section id="services" class="services-section">
+            <div class="container slide-from-right">
+                <h2 class="section-title">השירותים שלנו</h2>
+                <div class="services-tabs-container hidden">
+                    <div class="services-tabs-menu">
+                        <button class="tab-btn active" data-tab="tab-1"><i class="fas fa-video"></i> מצלמות אבטחה</button>
+                        <button class="tab-btn" data-tab="tab-2"><i class="fas fa-fingerprint"></i> בקרות כניסה</button>
+                        <button class="tab-btn" data-tab="tab-3"><i class="fas fa-bell"></i> מערכות אזעקה</button>
+                        <button class="tab-btn" data-tab="tab-4"><i class="fas fa-phone-alt"></i> מערכות אינטרקום</button>
+                        <button class="tab-btn" data-tab="tab-5"><i class="fas fa-network-wired"></i> רשתות אינטרנט</button>
+                        <button class="tab-btn" data-tab="tab-6"><i class="fas fa-volume-up"></i> מערכות כריזה וסאונד</button>
+                        <button class="tab-btn" data-tab="tab-7"><i class="fas fa-user-tie"></i> שירותי יעוץ</button>
+                        <button class="tab-btn" data-tab="tab-8"><i class="fas fa-tools"></i> תחזוקה ותמיכה</button>
+                        <button class="tab-btn" data-tab="tab-9"><i class="fas fa-mobile-alt"></i> ניהול חכם</button>
+                    </div>
+                    <div class="services-tabs-content">
+                        <div id="tab-1" class="tab-panel active">
+                            <div class="panel-icon"><i class="fas fa-video"></i></div>
+                            <h3>מצלמות אבטחה</h3>
+                            <p>התקנה ותחזוקה של מערכות מצלמות אבטחה מתקדמות עם צפייה מרחוק ואיכות HD.</p>
+                            <ul class="panel-features">
+                                <li>צפייה מרחוק דרך הסמארטפון</li>
+                                <li>התראות זמן אמת על זיהוי תנועה</li>
+                                <li>ראיית לילה ואיכות תמונה גבוהה</li>
+                            </ul>
+                        </div>
+                        <div id="tab-2" class="tab-panel">
+                            <div class="panel-icon"><i class="fas fa-fingerprint"></i></div>
+                            <h3>בקרות כניסה</h3>
+                            <p>מערכות בקרת כניסה חכמות עם קוראי כרטיסים, ביומטריה וניהול מרחוק.</p>
+                            <ul class="panel-features">
+                                <li>זיהוי ביומטרי (טביעת אצבע / זיהוי פנים)</li>
+                                <li>ניהול הרשאות עובדים ואורחים</li>
+                                <li>דוחות כניסה ויציאה מסודרים</li>
+                            </ul>
+                        </div>
+                        <div id="tab-3" class="tab-panel">
+                            <div class="panel-icon"><i class="fas fa-bell"></i></div>
+                            <h3>מערכות אזעקה</h3>
+                            <p>מערכות אזעקה מתקדמות עם חיבור למוקד ושליחת התראות לנייד.</p>
+                            <ul class="panel-features">
+                                <li>גלאים אלחוטיים וקווים מתקדמים</li>
+                                <li>שליטה מלאה מאפליקציה בטלפון</li>
+                                <li>חיבור מוקד אבטחה 24/7</li>
+                            </ul>
+                        </div>
+                        <div id="tab-4" class="tab-panel">
+                            <div class="panel-icon"><i class="fas fa-phone-alt"></i></div>
+                            <h3>מערכות אינטרקום</h3>
+                            <p>התקנת מערכות אינטרקום לבתים פרטיים, עסקים ובניינים.</p>
+                            <ul class="panel-features">
+                                <li>אינטרקום וידאו באיכות HD</li>
+                                <li>פתיחת דלת מרחוק דרך האפליקציה</li>
+                                <li>שילוב עם קודנים ובקרת כניסה</li>
+                            </ul>
+                        </div>
+                        <div id="tab-5" class="tab-panel">
+                            <div class="panel-icon"><i class="fas fa-network-wired"></i></div>
+                            <h3>רשתות אינטרנט</h3>
+                            <p>מגוון פתרונות ותשתיות תקשורת לבתים, עסקים ומוסדות.</p>
+                            <ul class="panel-features">
+                                <li>פריסת רשתות אלחוטיות (Wi-Fi) וקוויות</li>
+                                <li>ארונות תקשורת וסידור תשתיות</li>
+                                <li>פתרונות רשת מתקדמים לכיסוי מלא</li>
+                            </ul>
+                        </div>
+                        <div id="tab-6" class="tab-panel">
+                            <div class="panel-icon"><i class="fas fa-volume-up"></i></div>
+                            <h3>מערכות כריזה וסאונד</h3>
+                            <p>מערכות כריזה, סאונד והגברה לבתים, עסקים ומוסדות, ומערכות סאונד חכמות מבוססות רשת.</p>
+                            <ul class="panel-features">
+                                <li>רמקולים שקועים וחיצוניים באיכות גבוהה</li>
+                                <li>שליטה על אזורי השמעה מרובים</li>
+                                <li>מערכות חירום וכריזת אזהרה</li>
+                            </ul>
+                        </div>
+                        <div id="tab-7" class="tab-panel">
+                            <div class="panel-icon"><i class="fas fa-user-tie"></i></div>
+                            <h3>שירותי יעוץ</h3>
+                            <p>יעוץ פתרונות אבטחה ותקשורת ותכנון מערכות ותשתיות.</p>
+                            <ul class="panel-features">
+                                <li>תכנון הנדסי למערכות מתח נמוך</li>
+                                <li>ייעוץ ביטחוני מקצועי ואובייקטיבי</li>
+                                <li>ליווי פרויקטים משלב התכנון ועד לביצוע</li>
+                            </ul>
+                        </div>
+                        <div id="tab-8" class="tab-panel">
+                            <div class="panel-icon"><i class="fas fa-tools"></i></div>
+                            <h3>תחזוקה ותמיכה</h3>
+                            <p>שירותי תחזוקה שוטפת ותמיכה טכנית מלאה לכל המערכות.</p>
+                            <ul class="panel-features">
+                                <li>מענה טכני מהיר ומקצועי</li>
+                                <li>תחזוקה מונעת לציוד ומערכות</li>
+                                <li>שדרוג והרחבת מערכות קיימות</li>
+                            </ul>
+                        </div>
+                        <div id="tab-9" class="tab-panel">
+                            <div class="panel-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <h3>ניהול חכם</h3>
+                            <p>אפליקציה ייעודית לניהול וצפייה בכל המערכות מכל מקום.</p>
+                            <ul class="panel-features">
+                                <li>ממשק אחד לכלל מערכות האבטחה</li>
+                                <li>תרחישים חכמים (אזעקה + תאורה + תריסים)</li>
+                                <li>גישה מאובטחת בענן</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="gallery" class="gallery-section">
+            <div class="container slide-from-left">
+                <h2 class="section-title">העבודה שלנו</h2>
+                <div class="carousel-container" dir="ltr">
+                    <div class="carousel-track" id="gallery-track">
+                        <div class="gallery-item"><img src="img/work/1.png" alt="עבודת התקנה 1"></div>
+                        <div class="gallery-item"><img src="img/work/2.jpeg" alt="עבודת התקנה 2"></div>
+                        <div class="gallery-item"><img src="img/work/3.jpeg" alt="עבודת התקנה 3"></div>
+                        <div class="gallery-item"><img src="img/work/4.jpeg" alt="עבודת התקנה 4"></div>
+                        <div class="gallery-item"><img src="img/work/5.jpeg" alt="עבודת התקנה 5"></div>
+                        <div class="gallery-item"><img src="img/work/6.jpeg" alt="עבודת התקנה 6"></div>
+                        <div class="gallery-item"><img src="img/work/7.jpeg" alt="עבודת התקנה 7"></div>
+                        <div class="gallery-item"><img src="img/work/8.jpeg" alt="עבודת התקנה 8"></div>
+                        <div class="gallery-item"><img src="img/work/9.jpeg" alt="עבודת התקנה 9"></div>
+                        <div class="gallery-item"><img src="img/work/10.jpeg" alt="עבודת התקנה 10"></div>
+                        <div class="gallery-item"><img src="img/work/11.jpeg" alt="עבודת התקנה 11"></div>
+                        <div class="gallery-item"><img src="img/work/12.jpeg" alt="עבודת התקנה 12"></div>
+                        <div class="gallery-item"><img src="img/work/13.jpeg" alt="עבודת התקנה 13"></div>
+                        <div class="gallery-item"><img src="img/work/14.jpeg" alt="עבודת התקנה 14"></div>
+                        <div class="gallery-item"><img src="img/work/15.jpeg" alt="עבודת התקנה 15"></div>
+                        <div class="gallery-item"><img src="img/work/16.jpeg" alt="עבודת התקנה 16"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="about-section">
+            <div class="container about-container slide-from-right">
+                <div class="about-content hidden">
+                    <h2 class="section-title text-right">אודות החברה</h2>
+                    <p class="about-text">
+                        <strong>אופיר פתרונות אבטחה</strong> מציעה פתרונות אבטחה ותקשורת, מתמחים בשירותים מקצועיים ומתקדמים בכלל מערכות המתח הנמוך.
+                    </p>
+                    <p class="about-text">
+                        אנו מספקים פתרונות אבטחה מותאמים אישית לבתים, עסקים, מוסדות ומפעלים, עם דגש על טכנולוגיות מתקדמות ושירות אמין ומקצועי.
+                    </p>
+                    <div class="counters-grid">
+                        <div class="counter-box">
+                            <span class="counter-value" data-target="500">0</span><span class="counter-suffix">+</span>
+                            <span class="counter-label">פרויקטים שהושלמו</span>
+                        </div>
+                        <div class="counter-box">
+                            <span class="counter-value" data-target="24">0</span><span class="counter-suffix">/7</span>
+                            <span class="counter-label">תמיכה טכנית</span>
+                        </div>
+                        <div class="counter-box">
+                            <span class="counter-value" data-target="100">0</span><span class="counter-suffix">%</span>
+                            <span class="counter-label">שקט נפשי</span>
+                        </div>
+                        <div class="counter-box">
+                            <span class="counter-value" data-target="100">0</span><span class="counter-suffix">%</span>
+                            <span class="counter-label">שביעות רצון</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image-wrapper hidden">
+                    <svg viewBox="0 0 400 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="animated-camera-svg">
+                        <defs>
+                            <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#2a2a2a" />
+                                <stop offset="100%" stop-color="#0a0a0a" />
+                            </linearGradient>
+                            <linearGradient id="lensGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0ea5e9" />
+                                <stop offset="100%" stop-color="#020617" />
+                            </linearGradient>
+                            <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="rgba(14, 165, 233, 0.8)" />
+                                <stop offset="100%" stop-color="rgba(14, 165, 233, 0)" />
+                            </radialGradient>
+                        </defs>
+
+                        <!-- Wall Base -->
+                        <rect x="20" y="100" width="30" height="200" rx="10" fill="#111" stroke="#333" stroke-width="2"/>
+                        <rect x="50" y="180" width="30" height="40" fill="#050505" stroke="#222" stroke-width="1"/>
+                        
+                        <!-- Arm -->
+                        <path d="M 80 185 L 180 185 L 180 215 L 80 215 Z" fill="url(#bodyGrad)" stroke="#222" stroke-width="2"/>
+                        <!-- Pivot Joint -->
+                        <circle cx="180" cy="200" r="25" fill="#111" stroke="#0ea5e9" stroke-width="2"/>
+                        <circle cx="180" cy="200" r="10" fill="#333"/>
+
+                        <!-- Rotating Camera Group -->
+                        <g class="camera-head">
+                            <!-- Camera Body -->
+                            <path d="M 180 160 L 320 160 Q 340 160 340 180 L 340 220 Q 340 240 320 240 L 180 240 Z" fill="url(#bodyGrad)" stroke="#444" stroke-width="2"/>
+                            
+                            <!-- Camera Hood/Shield -->
+                            <path d="M 160 145 L 350 145 L 340 160 L 180 160 Z" fill="#000"/>
+
+                            <!-- Lens Casing -->
+                            <rect x="340" y="170" width="15" height="60" rx="5" fill="#050505" stroke="#222" stroke-width="2"/>
+
+                            <!-- The Lens (Zooms) -->
+                            <g class="camera-lens">
+                                <!-- Outer Glass -->
+                                <ellipse cx="355" cy="200" rx="10" ry="22" fill="url(#lensGrad)"/>
+                                <!-- Inner pupil -->
+                                <ellipse class="pupil" cx="355" cy="200" rx="4" ry="8" fill="#fff"/>
+                                <!-- Glow effect -->
+                                <ellipse class="lens-glow" cx="355" cy="200" rx="15" ry="25" fill="url(#glowGrad)"/>
+                            </g>
+
+                            <!-- Scanner Beam -->
+                            <polygon class="scanner-beam" points="355,200 500,20 500,380" fill="url(#glowGrad)"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="contact-section">
+            <div class="container slide-from-left">
+                <h2 class="section-title">צור קשר</h2>
+                <div class="contact-container">
+                    
+                    <div class="contact-info hidden">
+                        <h3>פרטי התקשרות</h3>
+                        <p class="contact-subtitle">אנחנו כאן לכל שאלה, ייעוץ או הצעת מחיר. נשמח לעמוד לשירותכם.</p>
+                        
+                        <ul class="info-list">
+                            <li>
+                                <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                                <div class="info-text">
+                                    <strong>טלפון</strong>
+                                    <span>052-8130545</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                                <div class="info-text">
+                                    <strong>אימייל</strong>
+                                    <span>ofirsecur@outlook.co.il</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="info-text">
+                                    <strong>כתובת</strong>
+                                    <span>מושב פרזון 1</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-icon"><i class="fas fa-clock"></i></div>
+                                <div class="info-text">
+                                    <strong>שעות פעילות</strong>
+                                    <span>א' - ה': 8:00-18:00<br>ו': 8:00-14:00</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="contact-form-wrapper hidden">
+                        <form class="contact-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="fullName">שם מלא</label>
+                                <input type="text" id="fullName" name="fullName" required placeholder="הכנס שם מלא">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">אימייל</label>
+                                <input type="email" id="email" name="email" required placeholder="הכנס אימייל">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">טלפון</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="הכנס מספר טלפון">
+                            </div>
+                            <div class="form-group">
+                                <label for="company">חברה/מקום מגורים (אופציונלי)</label>
+                                <input type="text" id="company" name="company" placeholder="הכנס חברה או יישוב">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">הפניה שלך</label>
+                                <textarea id="message" name="message" rows="4" required placeholder="איך נוכל לעזור?"></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">שלח פנייה</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="#" class="footer-logo">
+                    <img src="img/logo.PNG" alt="Ofir Security Solutions Logo" class="logo">
+                </a>
+                <p class="footer-desc">פתרונות אבטחה ותקשורת מתקדמים. נותנים לכם שקט נפשי עם טכנולוגיה עדכנית ושירות ללא פשרות.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="footer-title">ניווט מהיר</h4>
+                <ul class="footer-links">
+                    <li><a href="#hero">ראשי</a></li>
+                    <li><a href="#services">שירותים</a></li>
+                    <li><a href="#gallery">העבודה שלנו</a></li>
+                    <li><a href="#about">אודות</a></li>
+                    <li><a href="#contact">צור קשר</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="footer-title">מידע חשוב</h4>
+                <ul class="footer-links">
+                    <li><a href="legal.html#accessibility">הצהרת נגישות</a></li>
+                    <li><a href="legal.html#privacy">מדיניות פרטיות</a></li>
+                    <li><a href="legal.html#terms">תנאי שימוש</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4 class="footer-title">עקבו אחרינו</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/972528130545" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Ofir Security Solutions. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/972528130545" target="_blank" class="whatsapp-btn animate-bounce" aria-label="שלח הודעה בוואטסאפ">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+</body>
+</html>
