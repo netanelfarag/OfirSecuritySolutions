@@ -176,6 +176,31 @@
         </div>
     </footer>
     
+    <!-- Accessibility Menu -->
+    <button id="a11y-toggle" class="a11y-toggle-btn" aria-label="תפריט נגישות">
+        <i class="fas fa-wheelchair"></i>
+    </button>
+    <div id="a11y-menu" class="a11y-menu hidden-menu">
+        <div class="a11y-header">
+            <h3>הגדרות נגישות</h3>
+            <button id="a11y-close" aria-label="סגור תפריט נגישות">&times;</button>
+        </div>
+        <div class="a11y-content">
+            <div class="a11y-group">
+                <span class="a11y-label">גודל טקסט:</span>
+                <div class="a11y-flex">
+                    <button id="a11y-text-inc" class="a11y-btn" aria-label="הגדל טקסט"><i class="fas fa-search-plus"></i></button>
+                    <button id="a11y-text-dec" class="a11y-btn" aria-label="הקטן טקסט"><i class="fas fa-search-minus"></i></button>
+                </div>
+            </div>
+            <button id="a11y-font" class="a11y-btn-toggle" aria-label="גופן קריא"><i class="fas fa-font"></i> גופן קריא</button>
+            <button id="a11y-contrast" class="a11y-btn-toggle" aria-label="ניגודיות גבוהה"><i class="fas fa-adjust"></i> ניגודיות גבוהה</button>
+            <button id="a11y-links" class="a11y-btn-toggle" aria-label="הדגש קישורים"><i class="fas fa-link"></i> הדגש קישורים</button>
+            <button id="a11y-anim" class="a11y-btn-toggle" aria-label="עצור אנימציות"><i class="fas fa-pause-circle"></i> עצור אנימציות</button>
+            <button id="a11y-reset" class="a11y-btn-reset" aria-label="איפוס הגדרות נגישות"><i class="fas fa-sync-alt"></i> איפוס נגישות</button>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>

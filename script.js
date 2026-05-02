@@ -215,27 +215,188 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Lenis Smooth Scroll Initialization
-if (typeof Lenis !== 'undefined') {
-    const lenis = new Lenis({
-        duration: 1.5,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-    });
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            lenis.scrollTo(this.getAttribute('href'));
+try {
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
         });
-    });
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                lenis.scrollTo(this.getAttribute('href'));
+            });
+        });
+    }
+} catch (e) {
+    console.warn('Lenis init failed:', e);
 }
+
+// Accessibility Menu Logic
+(function() {
+    const a11yToggle = document.getElementById('a11y-toggle');
+    const a11yMenu = document.getElementById('a11y-menu');
+    const a11yClose = document.getElementById('a11y-close');
+    
+    if (!a11yToggle || !a11yMenu) return;
+
+    // Toggle menu
+    a11yToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        a11yMenu.classList.toggle('hidden-menu');
+        
+        // Safety fallback to ensure it becomes visible
+        if (a11yMenu.classList.contains('hidden-menu')) {
+            a11yMenu.style.display = 'none';
+        } else {
+            a11yMenu.style.display = 'flex';
+            a11yMenu.style.opacity = '1';
+            a11yMenu.style.pointerEvents = 'auto';
+            a11yMenu.style.transform = 'scale(1) translateY(0)';
+        }
+    });
+
+    if (a11yClose) {
+        a11yClose.addEventListener('click', function() {
+            a11yMenu.classList.add('hidden-menu');
+            a11yMenu.style.display = 'none';
+        });
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!a11yMenu.contains(e.target) && e.target !== a11yToggle && !a11yToggle.contains(e.target)) {
+            a11yMenu.classList.add('hidden-menu');
+            a11yMenu.style.display = 'none';
+        }
+    });
+
+    // Elements
+    const btnInc = document.getElementById('a11y-text-inc');
+    const btnDec = document.getElementById('a11y-text-dec');
+    const btnFont = document.getElementById('a11y-font');
+    const btnContrast = document.getElementById('a11y-contrast');
+    const btnLinks = document.getElementById('a11y-links');
+    const btnAnim = document.getElementById('a11y-anim');
+    const btnReset = document.getElementById('a11y-reset');
+
+    // State
+    let state;
+    try {
+        state = JSON.parse(localStorage.getItem('a11y_state'));
+    } catch (e) {
+        console.error("Failed to parse a11y state", e);
+    }
+    
+    if (!state || typeof state !== 'object') {
+        state = {
+            textSize: 100,
+            font: false,
+            contrast: false,
+            links: false,
+            anim: false
+        };
+    }
+
+    function applyState() {
+        // Text size
+        document.documentElement.style.fontSize = state.textSize + '%';
+        
+        // Font
+        if (btnFont) {
+            if (state.font) {
+                document.body.classList.add('a11y-readable-font');
+                btnFont.classList.add('active');
+            } else {
+                document.body.classList.remove('a11y-readable-font');
+                btnFont.classList.remove('active');
+            }
+        }
+
+        // Contrast
+        if (btnContrast) {
+            if (state.contrast) {
+                document.body.classList.add('a11y-high-contrast');
+                btnContrast.classList.add('active');
+            } else {
+                document.body.classList.remove('a11y-high-contrast');
+                btnContrast.classList.remove('active');
+            }
+        }
+
+        // Links
+        if (btnLinks) {
+            if (state.links) {
+                document.body.classList.add('a11y-highlight-links');
+                btnLinks.classList.add('active');
+            } else {
+                document.body.classList.remove('a11y-highlight-links');
+                btnLinks.classList.remove('active');
+            }
+        }
+
+        // Animations
+        if (btnAnim) {
+            if (state.anim) {
+                document.body.classList.add('a11y-no-animations');
+                btnAnim.classList.add('active');
+            } else {
+                document.body.classList.remove('a11y-no-animations');
+                btnAnim.classList.remove('active');
+            }
+        }
+
+        localStorage.setItem('a11y_state', JSON.stringify(state));
+    }
+
+    // Event Listeners
+    if (btnInc) btnInc.addEventListener('click', function() {
+        if (state.textSize < 150) state.textSize += 10;
+        applyState();
+    });
+
+    if (btnDec) btnDec.addEventListener('click', function() {
+        if (state.textSize > 80) state.textSize -= 10;
+        applyState();
+    });
+
+    if (btnFont) btnFont.addEventListener('click', function() {
+        state.font = !state.font;
+        applyState();
+    });
+
+    if (btnContrast) btnContrast.addEventListener('click', function() {
+        state.contrast = !state.contrast;
+        applyState();
+    });
+
+    if (btnLinks) btnLinks.addEventListener('click', function() {
+        state.links = !state.links;
+        applyState();
+    });
+
+    if (btnAnim) btnAnim.addEventListener('click', function() {
+        state.anim = !state.anim;
+        applyState();
+    });
+
+    if (btnReset) btnReset.addEventListener('click', function() {
+        state = { textSize: 100, font: false, contrast: false, links: false, anim: false };
+        applyState();
+    });
+
+    // Initialize
+    applyState();
+})();

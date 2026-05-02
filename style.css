@@ -1779,3 +1779,207 @@ button:focus-visible {
         height: auto;
     }
 }
+
+/* Accessibility Styles */
+.a11y-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.a11y-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+.a11y-menu {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 320px;
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: bottom right;
+}
+
+.a11y-menu.hidden-menu {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    pointer-events: none;
+}
+
+.a11y-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.a11y-header h3 {
+    font-size: 1.2rem;
+    color: var(--color-text);
+}
+
+#a11y-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#a11y-close:hover {
+    color: var(--color-accent);
+}
+
+.a11y-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.a11y-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.a11y-label {
+    font-size: 1rem;
+}
+
+.a11y-flex {
+    display: flex;
+    gap: 10px;
+}
+
+.a11y-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.a11y-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.a11y-btn-toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.a11y-btn-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.a11y-btn-toggle.active {
+    background: rgba(14, 165, 233, 0.2);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.a11y-btn-reset {
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    transition: var(--transition);
+}
+
+.a11y-btn-reset:hover {
+    background: #e60000;
+}
+
+
+/* Global A11y Classes */
+body.a11y-readable-font * {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+body.a11y-high-contrast {
+    background-color: #000 !important;
+    color: #ffeb3b !important;
+}
+
+body.a11y-high-contrast * {
+    background-color: #000 !important;
+    color: #ffeb3b !important;
+    border-color: #ffeb3b !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+body.a11y-high-contrast img, 
+body.a11y-high-contrast svg {
+    filter: grayscale(100%) contrast(120%) brightness(120%) !important;
+}
+
+body.a11y-high-contrast .a11y-menu, 
+body.a11y-high-contrast .a11y-menu * {
+    background-color: #111 !important;
+    color: #ffeb3b !important;
+    border-color: #ffeb3b !important;
+}
+
+body.a11y-highlight-links a {
+    text-decoration: underline !important;
+    text-decoration-thickness: 3px !important;
+    color: #ffeb3b !important;
+    background-color: #000 !important;
+    padding: 2px !important;
+}
+
+body.a11y-no-animations * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
