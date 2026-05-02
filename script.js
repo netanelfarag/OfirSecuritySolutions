@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursorGlow = document.querySelector('.cursor-glow');
     if (cursorGlow) {
         document.addEventListener('mousemove', (e) => {
-            cursorGlow.style.transform = `translate(px, px)`;
+            cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
         });
     }
 });
@@ -253,35 +253,54 @@ try {
     if (!a11yToggle || !a11yMenu) return;
 
     // Toggle menu
-    a11yToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        a11yMenu.classList.toggle('hidden-menu');
-        
-        // Safety fallback to ensure it becomes visible
-        if (a11yMenu.classList.contains('hidden-menu')) {
-            a11yMenu.style.display = 'none';
-        } else {
-            a11yMenu.style.display = 'flex';
-            a11yMenu.style.opacity = '1';
-            a11yMenu.style.pointerEvents = 'auto';
-            a11yMenu.style.transform = 'scale(1) translateY(0)';
+    function toggleMenu(show) {
+        if (show === undefined) {
+            show = a11yMenu.classList.contains('hidden-menu');
         }
+        
+        if (show) {
+            a11yMenu.style.display = 'flex';
+            // Trigger reflow for transition
+            a11yMenu.offsetHeight; 
+            a11yMenu.classList.remove('hidden-menu');
+        } else {
+            a11yMenu.classList.add('hidden-menu');
+            // Wait for transition to finish
+            setTimeout(() => {
+                if (a11yMenu.classList.contains('hidden-menu')) {
+                    a11yMenu.style.display = 'none';
+                }
+            }, 300);
+        }
+    }
+
+    a11yToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
     });
 
     if (a11yClose) {
         a11yClose.addEventListener('click', function() {
-            a11yMenu.classList.add('hidden-menu');
-            a11yMenu.style.display = 'none';
+            toggleMenu(false);
         });
     }
 
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
-        if (!a11yMenu.contains(e.target) && e.target !== a11yToggle && !a11yToggle.contains(e.target)) {
-            a11yMenu.classList.add('hidden-menu');
-            a11yMenu.style.display = 'none';
+        if (a11yMenu && !a11yMenu.contains(e.target) && e.target !== a11yToggle && !a11yToggle.contains(e.target)) {
+            if (!a11yMenu.classList.contains('hidden-menu')) {
+                toggleMenu(false);
+            }
         }
     });
+
+    // Initial state: sync display with class
+    if (a11yMenu.classList.contains('hidden-menu')) {
+        a11yMenu.style.display = 'none';
+    } else {
+        a11yMenu.style.display = 'flex';
+    }
 
     // Elements
     const btnInc = document.getElementById('a11y-text-inc');

@@ -1796,8 +1796,9 @@ button:focus-visible {
     align-items: center;
     font-size: 2rem;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
-    z-index: 1000;
-    cursor: pointer;
+    z-index: 9999 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
     transition: var(--transition);
 }
 
