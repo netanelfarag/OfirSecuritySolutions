@@ -1193,8 +1193,8 @@ button:focus-visible {
 /* WhatsApp Button */
 .whatsapp-btn {
     position: fixed;
-    bottom: 30px;
-    left: 30px;
+    bottom: 100px;
+    right: 30px;
     width: 60px;
     height: 60px;
     background-color: #25d366;
@@ -1809,7 +1809,7 @@ button:focus-visible {
 
 .a11y-menu {
     position: fixed;
-    bottom: 100px;
+    bottom: 170px;
     right: 30px;
     width: 320px;
     background: rgba(10, 10, 10, 0.95);
