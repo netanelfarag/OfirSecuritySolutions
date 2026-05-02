@@ -1,29 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Parallax background effect for the hero section
+    // --- Hero Section Parallax ---
     const hero = document.getElementById('hero');
     const heroBg = document.querySelector('.hero-background');
 
     if (hero && heroBg) {
-        // Only apply mouse tracking on non-touch devices
         if (window.matchMedia("(pointer: fine)").matches) {
             hero.addEventListener('mousemove', (e) => {
                 const { clientX, clientY } = e;
-                
-                // Calculate movement (subtle shift opposite to mouse direction)
                 const moveX = (clientX / window.innerWidth - 0.5) * 20;
                 const moveY = (clientY / window.innerHeight - 0.5) * 20;
-                
                 heroBg.style.transform = `translate(${-moveX}px, ${-moveY}px)`;
             });
 
-            // Reset position on mouse leave
             hero.addEventListener('mouseleave', () => {
                 heroBg.style.transform = `translate(0px, 0px)`;
             });
         }
     }
     
-    // Navbar Scroll Effect
+    // --- Navbar Scroll Effect ---
     const navbar = document.querySelector('.navbar');
     const scrollIndicator = document.querySelector('.scroll-indicator');
     
@@ -37,18 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Mobile Menu Toggle
+    // --- Mobile Menu Logic ---
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
     if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             menuToggle.classList.toggle('is-active');
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when clicking a link
+        navMenu.addEventListener('click', () => {
+            menuToggle.classList.remove('is-active');
+            navMenu.classList.remove('active');
+        });
+
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('is-active');
@@ -57,28 +57,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Smooth scrolling for anchor links is handled by CSS (scroll-behavior: smooth)
-    // but we can add an extra safety layer if needed for older browsers.
-    
-    // Intersection Observer for scroll animations
+    // --- Scroll Animations (Intersection Observer) ---
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('show');
                 
-                // If it's the about section, trigger counters
                 if (entry.target.classList.contains('about-content')) {
                     const counters = entry.target.querySelectorAll('.counter-value');
                     counters.forEach(counter => {
                         const target = +counter.getAttribute('data-target');
-                        const duration = 2000; // 2 seconds
-                        const increment = target / (duration / 16); // 60fps
+                        const duration = 2000;
+                        const increment = target / (duration / 16);
                         
                         let current = 0;
                         const updateCounter = () => {
@@ -93,16 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         updateCounter();
                     });
                 }
-                
-                observer.unobserve(entry.target); // Stop observing once shown
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observe all hidden elements
     const hiddenElements = document.querySelectorAll('.hidden, .slide-from-right, .slide-from-left');
-    
-    // Add staggered delay based on index for grid items
     hiddenElements.forEach((el, index) => {
         if(el.classList.contains('service-card')) {
             el.style.transitionDelay = `${(index % 3) * 0.15}s`;
@@ -110,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Gallery Carousel Logic
+    // --- Gallery Carousel ---
     const galleryTrack = document.getElementById('gallery-track');
     if (galleryTrack) {
         const items = Array.from(galleryTrack.children);
@@ -120,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lightbox Logic using event delegation
+    // --- Lightbox ---
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.lightbox-close');
@@ -137,23 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                lightbox.style.display = 'none';
-            });
-        }
-
-        // Close on clicking outside the image
+        if (closeBtn) closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
         lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.style.display = 'none';
-            }
+            if (e.target === lightbox) lightbox.style.display = 'none';
         });
     }
-});
 
-// Dynamic Backgrounds Logic
-document.addEventListener('DOMContentLoaded', () => {
+    // --- Particles & Cursor Glow ---
     if (typeof particlesJS !== 'undefined') {
         particlesJS('particles-js', {
             "particles": {
@@ -167,15 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             "interactivity": {
                 "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": { "distance": 150, "line_linked": { "opacity": 0.8 } },
-                    "push": { "particles_nb": 3 }
-                }
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "grab": { "distance": 150, "line_linked": { "opacity": 0.8 } }, "push": { "particles_nb": 3 } }
             },
             "retina_detect": true
         });
@@ -187,9 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
         });
     }
-});
 
-    // Services Tabs Logic
+    // --- Services Tabs ---
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabPanels = document.querySelectorAll('.tab-panel');
     if (tabBtns.length > 0) {
@@ -197,54 +171,111 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 const targetId = btn.getAttribute('data-tab');
                 const isActive = btn.classList.contains('active');
-                
                 if (isActive && window.innerWidth <= 992) {
                     btn.classList.remove('active');
                     document.getElementById(targetId).classList.remove('active');
                     return;
                 }
-                
                 tabBtns.forEach(b => b.classList.remove('active'));
                 tabPanels.forEach(p => p.classList.remove('active'));
-                
                 document.querySelectorAll(`.tab-btn[data-tab="${targetId}"]`).forEach(b => b.classList.add('active'));
                 document.getElementById(targetId).classList.add('active');
             });
         });
     }
 
+    // --- EmailJS Form Submission ---
+    const contactForm = document.getElementById('contactForm');
+    const statusMessage = document.getElementById('statusMessage');
 
-// Lenis Smooth Scroll Initialization
-try {
-    if (typeof Lenis !== 'undefined') {
-        const lenis = new Lenis({
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-            infinite: false,
+    if (contactForm && typeof emailjs !== 'undefined') {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const formData = new FormData(contactForm);
+
+            // Prepare template parameters matching EmailJS template
+            const templateParams = {
+                from_name: formData.get("fullName"),
+                from_email: formData.get("email"),
+                phone: formData.get("phone"),
+                company: formData.get("company") || "לא צוין",
+                message: formData.get("message"),
+                to_email: "ofirsecur@outlook.co.il",
+            };
+
+            // Disable button and show loading state
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.dataset.originalHtml = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="btn-text">שולח...</span> <i class="fas fa-spinner fa-spin"></i>';
+            }
+
+            // Send via EmailJS
+            emailjs.send("service_bkb3yyq", "template_qjw4wmd", templateParams)
+                .then(function() {
+                    if (statusMessage) {
+                        statusMessage.innerHTML = '<div style="color: #4ade80; margin-top: 15px; padding: 12px; border: 1px solid #4ade80; border-radius: 8px; background: rgba(74, 222, 128, 0.1); font-weight: 500;">הודעתך נשלחה בהצלחה! נחזור אליך בקרוב.</div>';
+                    }
+                    contactForm.reset();
+                }, function(error) {
+                    console.error("EmailJS Error:", error);
+                    if (statusMessage) {
+                        statusMessage.innerHTML = '<div style="color: #f87171; margin-top: 15px; padding: 12px; border: 1px solid #f87171; border-radius: 8px; background: rgba(248, 113, 113, 0.1); font-weight: 500;">שגיאה בשליחת ההודעה. אנא נסה שוב או צור קשר טלפונית.</div>';
+                    }
+                })
+                .finally(function() {
+                    // Re-enable button
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = submitBtn.dataset.originalHtml;
+                    }
+                    // Clear status message after 6 seconds
+                    setTimeout(() => { 
+                        if (statusMessage) statusMessage.innerHTML = ''; 
+                    }, 6000);
+                });
         });
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                lenis.scrollTo(this.getAttribute('href'));
-            });
-        });
+    } else if (contactForm) {
+        console.error("EmailJS SDK not found. Ensure initialization in index.html is correct.");
     }
-} catch (e) {
-    console.warn('Lenis init failed:', e);
-}
 
-// Accessibility Menu Logic
+    // --- Lenis Smooth Scroll ---
+    try {
+        if (typeof Lenis !== 'undefined') {
+            const lenis = new Lenis({
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                mouseMultiplier: 1,
+                smoothTouch: false,
+                touchMultiplier: 2,
+                infinite: false,
+            });
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== "#") {
+                        e.preventDefault();
+                        lenis.scrollTo(targetId);
+                    }
+                });
+            });
+        }
+    } catch (e) {
+        console.warn('Lenis init failed:', e);
+    }
+});
+
+// --- Accessibility Menu Logic (Self-Executing) ---
 (function() {
     const a11yToggle = document.getElementById('a11y-toggle');
     const a11yMenu = document.getElementById('a11y-menu');
@@ -252,24 +283,16 @@ try {
     
     if (!a11yToggle || !a11yMenu) return;
 
-    // Toggle menu
     function toggleMenu(show) {
-        if (show === undefined) {
-            show = a11yMenu.classList.contains('hidden-menu');
-        }
-        
+        if (show === undefined) show = a11yMenu.classList.contains('hidden-menu');
         if (show) {
             a11yMenu.style.display = 'flex';
-            // Trigger reflow for transition
             a11yMenu.offsetHeight; 
             a11yMenu.classList.remove('hidden-menu');
         } else {
             a11yMenu.classList.add('hidden-menu');
-            // Wait for transition to finish
             setTimeout(() => {
-                if (a11yMenu.classList.contains('hidden-menu')) {
-                    a11yMenu.style.display = 'none';
-                }
+                if (a11yMenu.classList.contains('hidden-menu')) a11yMenu.style.display = 'none';
             }, 300);
         }
     }
@@ -280,29 +303,17 @@ try {
         toggleMenu();
     });
 
-    if (a11yClose) {
-        a11yClose.addEventListener('click', function() {
-            toggleMenu(false);
-        });
-    }
+    if (a11yClose) a11yClose.addEventListener('click', () => toggleMenu(false));
 
-    // Close menu when clicking outside
     document.addEventListener('click', function(e) {
         if (a11yMenu && !a11yMenu.contains(e.target) && e.target !== a11yToggle && !a11yToggle.contains(e.target)) {
-            if (!a11yMenu.classList.contains('hidden-menu')) {
-                toggleMenu(false);
-            }
+            if (!a11yMenu.classList.contains('hidden-menu')) toggleMenu(false);
         }
     });
 
-    // Initial state: sync display with class
-    if (a11yMenu.classList.contains('hidden-menu')) {
-        a11yMenu.style.display = 'none';
-    } else {
-        a11yMenu.style.display = 'flex';
-    }
+    if (a11yMenu.classList.contains('hidden-menu')) a11yMenu.style.display = 'none';
+    else a11yMenu.style.display = 'flex';
 
-    // Elements
     const btnInc = document.getElementById('a11y-text-inc');
     const btnDec = document.getElementById('a11y-text-dec');
     const btnFont = document.getElementById('a11y-font');
@@ -311,7 +322,6 @@ try {
     const btnAnim = document.getElementById('a11y-anim');
     const btnReset = document.getElementById('a11y-reset');
 
-    // State
     let state;
     try {
         state = JSON.parse(localStorage.getItem('a11y_state'));
@@ -320,102 +330,37 @@ try {
     }
     
     if (!state || typeof state !== 'object') {
-        state = {
-            textSize: 100,
-            font: false,
-            contrast: false,
-            links: false,
-            anim: false
-        };
+        state = { textSize: 100, font: false, contrast: false, links: false, anim: false };
     }
 
     function applyState() {
-        // Text size
         document.documentElement.style.fontSize = state.textSize + '%';
-        
-        // Font
         if (btnFont) {
-            if (state.font) {
-                document.body.classList.add('a11y-readable-font');
-                btnFont.classList.add('active');
-            } else {
-                document.body.classList.remove('a11y-readable-font');
-                btnFont.classList.remove('active');
-            }
+            document.body.classList.toggle('a11y-readable-font', state.font);
+            btnFont.classList.toggle('active', state.font);
         }
-
-        // Contrast
         if (btnContrast) {
-            if (state.contrast) {
-                document.body.classList.add('a11y-high-contrast');
-                btnContrast.classList.add('active');
-            } else {
-                document.body.classList.remove('a11y-high-contrast');
-                btnContrast.classList.remove('active');
-            }
+            document.body.classList.toggle('a11y-high-contrast', state.contrast);
+            btnContrast.classList.toggle('active', state.contrast);
         }
-
-        // Links
         if (btnLinks) {
-            if (state.links) {
-                document.body.classList.add('a11y-highlight-links');
-                btnLinks.classList.add('active');
-            } else {
-                document.body.classList.remove('a11y-highlight-links');
-                btnLinks.classList.remove('active');
-            }
+            document.body.classList.toggle('a11y-highlight-links', state.links);
+            btnLinks.classList.toggle('active', state.links);
         }
-
-        // Animations
         if (btnAnim) {
-            if (state.anim) {
-                document.body.classList.add('a11y-no-animations');
-                btnAnim.classList.add('active');
-            } else {
-                document.body.classList.remove('a11y-no-animations');
-                btnAnim.classList.remove('active');
-            }
+            document.body.classList.toggle('a11y-no-animations', state.anim);
+            btnAnim.classList.toggle('active', state.anim);
         }
-
         localStorage.setItem('a11y_state', JSON.stringify(state));
     }
 
-    // Event Listeners
-    if (btnInc) btnInc.addEventListener('click', function() {
-        if (state.textSize < 150) state.textSize += 10;
-        applyState();
-    });
+    if (btnInc) btnInc.addEventListener('click', () => { if (state.textSize < 150) state.textSize += 10; applyState(); });
+    if (btnDec) btnDec.addEventListener('click', () => { if (state.textSize > 80) state.textSize -= 10; applyState(); });
+    if (btnFont) btnFont.addEventListener('click', () => { state.font = !state.font; applyState(); });
+    if (btnContrast) btnContrast.addEventListener('click', () => { state.contrast = !state.contrast; applyState(); });
+    if (btnLinks) btnLinks.addEventListener('click', () => { state.links = !state.links; applyState(); });
+    if (btnAnim) btnAnim.addEventListener('click', () => { state.anim = !state.anim; applyState(); });
+    if (btnReset) btnReset.addEventListener('click', () => { state = { textSize: 100, font: false, contrast: false, links: false, anim: false }; applyState(); });
 
-    if (btnDec) btnDec.addEventListener('click', function() {
-        if (state.textSize > 80) state.textSize -= 10;
-        applyState();
-    });
-
-    if (btnFont) btnFont.addEventListener('click', function() {
-        state.font = !state.font;
-        applyState();
-    });
-
-    if (btnContrast) btnContrast.addEventListener('click', function() {
-        state.contrast = !state.contrast;
-        applyState();
-    });
-
-    if (btnLinks) btnLinks.addEventListener('click', function() {
-        state.links = !state.links;
-        applyState();
-    });
-
-    if (btnAnim) btnAnim.addEventListener('click', function() {
-        state.anim = !state.anim;
-        applyState();
-    });
-
-    if (btnReset) btnReset.addEventListener('click', function() {
-        state = { textSize: 100, font: false, contrast: false, links: false, anim: false };
-        applyState();
-    });
-
-    // Initialize
     applyState();
 })();

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ofir Security Solutions | פתרונות אבטחה ותקשורת מתקדמים</title>
-    <meta name="description" content="אופיר פתרונות אבטחה - התקנה ותחזוקה של מצלמות אבטחה, מערכות אזעקה, אינטרקום, בקרות כניסה ותשתיות תקשורת. שירות מקצועי ואמין לבית ולעסק.">
-    
+    <meta name="description"
+        content="אופיר פתרונות אבטחה - התקנה ותחזוקה של מצלמות אבטחה, מערכות אזעקה, אינטרקום, בקרות כניסה ותשתיות תקשורת. שירות מקצועי ואמין לבית ולעסק.">
+
     <!-- Canonical Tag -->
     <link rel="canonical" href="https://ofirsecuritysolutions.com/">
 
@@ -23,7 +25,8 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ofirsecuritysolutions.com/">
     <meta property="twitter:title" content="Ofir Security Solutions | פתרונות אבטחה ותקשורת">
-    <meta property="twitter:description" content="פתרונות אבטחה, שקט נפשי. התקנת מצלמות, אזעקות ותשתיות תקשורת מתקדמות.">
+    <meta property="twitter:description"
+        content="פתרונות אבטחה, שקט נפשי. התקנת מצלמות, אזעקות ותשתיות תקשורת מתקדמות.">
     <meta property="twitter:image" content="https://ofirsecuritysolutions.com/img/ofirlogo.png">
 
     <!-- Structured Data -->
@@ -50,13 +53,7 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday"
-          ],
+          "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
           "opens": "08:00",
           "closes": "18:00"
         },
@@ -68,15 +65,46 @@
         }
       ],
       "sameAs": [
-        "https://www.facebook.com/OfirSecuritySolutions",
-        "https://www.instagram.com/ofirsecur"
-      ]
+        "https://www.facebook.com/ofirsecuritysolutions/?rdid=56J68rltvhrnOVU3",
+        "https://www.instagram.com/ofir_security_solutions/",
+        "https://www.tiktok.com/@ofir_security_solutions?_t=ZS-8xLUu1s9gcj&_r=1"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Security & Communication Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "CCTV Installation - התקנת מצלמות אבטחה"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Alarm Systems - מערכות אזעקה"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Intercom & Access Control - אינטרקום ובקרות כניסה"
+            }
+          }
+        ]
+      }
     }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Orbitron:wght@500;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="particles-js"></div>
     <div class="cursor-glow"></div>
@@ -139,35 +167,39 @@
                         </defs>
 
                         <!-- Base Mount (Ceiling/Wall) -->
-                        <ellipse cx="250" cy="180" rx="220" ry="40" fill="url(#domeMountGrad)" stroke="#444" stroke-width="2"/>
-                        <path d="M 30 180 L 30 200 C 30 220, 470 220, 470 200 L 470 180 Z" fill="#0a0a0a" stroke="#222" stroke-width="2"/>
-                        
+                        <ellipse cx="250" cy="180" rx="220" ry="40" fill="url(#domeMountGrad)" stroke="#444"
+                            stroke-width="2" />
+                        <path d="M 30 180 L 30 200 C 30 220, 470 220, 470 200 L 470 180 Z" fill="#0a0a0a" stroke="#222"
+                            stroke-width="2" />
+
                         <!-- Internal Mechanics (Clipped by Dome Glass) -->
                         <g clip-path="url(#dome-glass-clip)">
                             <rect x="0" y="0" width="500" height="500" fill="#050505" />
 
                             <!-- Moving Camera Head -->
                             <g class="dome-camera-head">
-                                <circle cx="250" cy="270" r="100" fill="#151515" stroke="#2a2a2a" stroke-width="2"/>
+                                <circle cx="250" cy="270" r="100" fill="#151515" stroke="#2a2a2a" stroke-width="2" />
                                 <!-- Side brackets -->
                                 <rect x="130" y="240" width="30" height="60" rx="5" fill="#222" />
                                 <rect x="340" y="240" width="30" height="60" rx="5" fill="#222" />
-                                
+
                                 <!-- Lens assembly -->
                                 <g class="dome-lens-zoom">
-                                    <circle cx="250" cy="270" r="70" fill="#0a0a0a" stroke="#333" stroke-width="4"/>
-                                    <circle cx="250" cy="270" r="50" fill="url(#domeLensGrad)"/>
-                                    <ellipse cx="230" cy="245" rx="15" ry="8" fill="#fff" opacity="0.6" transform="rotate(-30 230 245)"/>
-                                    <circle cx="250" cy="270" r="25" fill="url(#domeGlow)"/>
+                                    <circle cx="250" cy="270" r="70" fill="#0a0a0a" stroke="#333" stroke-width="4" />
+                                    <circle cx="250" cy="270" r="50" fill="url(#domeLensGrad)" />
+                                    <ellipse cx="230" cy="245" rx="15" ry="8" fill="#fff" opacity="0.6"
+                                        transform="rotate(-30 230 245)" />
+                                    <circle cx="250" cy="270" r="25" fill="url(#domeGlow)" />
                                     <!-- Red LED -->
-                                    <circle cx="295" cy="235" r="5" fill="#ff0000" class="dome-recording-led"/>
+                                    <circle cx="295" cy="235" r="5" fill="#ff0000" class="dome-recording-led" />
                                 </g>
                             </g>
                         </g>
 
                         <!-- Glass Dome Cover -->
-                        <path d="M 50 200 A 200 200 0 0 0 450 200 Z" fill="url(#glassReflection)"/>
-                        <path d="M 50 200 A 200 200 0 0 0 450 200 Z" fill="none" stroke="#555" stroke-width="3" opacity="0.5"/>
+                        <path d="M 50 200 A 200 200 0 0 0 450 200 Z" fill="url(#glassReflection)" />
+                        <path d="M 50 200 A 200 200 0 0 0 450 200 Z" fill="none" stroke="#555" stroke-width="3"
+                            opacity="0.5" />
                     </svg>
                 </div>
             </div>
@@ -179,18 +211,23 @@
                 <h2 class="section-title">השירותים שלנו</h2>
                 <div class="services-tabs-container hidden">
                     <div class="services-tabs-menu desktop-only">
-                        <button class="tab-btn active" data-tab="tab-1"><i class="fas fa-video"></i> מצלמות אבטחה</button>
+                        <button class="tab-btn active" data-tab="tab-1"><i class="fas fa-video"></i> מצלמות
+                            אבטחה</button>
                         <button class="tab-btn" data-tab="tab-2"><i class="fas fa-fingerprint"></i> בקרות כניסה</button>
                         <button class="tab-btn" data-tab="tab-3"><i class="fas fa-bell"></i> מערכות אזעקה</button>
-                        <button class="tab-btn" data-tab="tab-4"><i class="fas fa-phone-alt"></i> מערכות אינטרקום</button>
-                        <button class="tab-btn" data-tab="tab-5"><i class="fas fa-network-wired"></i> רשתות אינטרנט</button>
-                        <button class="tab-btn" data-tab="tab-6"><i class="fas fa-volume-up"></i> מערכות כריזה וסאונד</button>
+                        <button class="tab-btn" data-tab="tab-4"><i class="fas fa-phone-alt"></i> מערכות
+                            אינטרקום</button>
+                        <button class="tab-btn" data-tab="tab-5"><i class="fas fa-network-wired"></i> רשתות
+                            אינטרנט</button>
+                        <button class="tab-btn" data-tab="tab-6"><i class="fas fa-volume-up"></i> מערכות כריזה
+                            וסאונד</button>
                         <button class="tab-btn" data-tab="tab-7"><i class="fas fa-user-tie"></i> שירותי יעוץ</button>
                         <button class="tab-btn" data-tab="tab-8"><i class="fas fa-tools"></i> תחזוקה ותמיכה</button>
                         <button class="tab-btn" data-tab="tab-9"><i class="fas fa-mobile-alt"></i> ניהול חכם</button>
                     </div>
                     <div class="services-tabs-content">
-                        <button class="tab-btn mobile-only active" data-tab="tab-1"><i class="fas fa-video"></i> מצלמות אבטחה <i class="fas fa-chevron-down ms-auto"></i></button>
+                        <button class="tab-btn mobile-only active" data-tab="tab-1"><i class="fas fa-video"></i> מצלמות
+                            אבטחה <i class="fas fa-chevron-down ms-auto"></i></button>
                         <div id="tab-1" class="tab-panel active">
                             <div class="panel-icon"><i class="fas fa-video"></i></div>
                             <h3>מצלמות אבטחה</h3>
@@ -201,7 +238,8 @@
                                 <li>ראיית לילה ואיכות תמונה גבוהה</li>
                             </ul>
                         </div>
-                        <button class="tab-btn mobile-only" data-tab="tab-2"><i class="fas fa-fingerprint"></i> בקרות כניסה <i class="fas fa-chevron-down ms-auto"></i></button>
+                        <button class="tab-btn mobile-only" data-tab="tab-2"><i class="fas fa-fingerprint"></i> בקרות
+                            כניסה <i class="fas fa-chevron-down ms-auto"></i></button>
                         <div id="tab-2" class="tab-panel">
                             <div class="panel-icon"><i class="fas fa-fingerprint"></i></div>
                             <h3>בקרות כניסה</h3>
@@ -212,7 +250,8 @@
                                 <li>דוחות כניסה ויציאה מסודרים</li>
                             </ul>
                         </div>
-                        <button class="tab-btn mobile-only" data-tab="tab-3"><i class="fas fa-bell"></i> מערכות אזעקה <i class="fas fa-chevron-down ms-auto"></i></button>
+                        <button class="tab-btn mobile-only" data-tab="tab-3"><i class="fas fa-bell"></i> מערכות אזעקה <i
+                                class="fas fa-chevron-down ms-auto"></i></button>
                         <div id="tab-3" class="tab-panel">
                             <div class="panel-icon"><i class="fas fa-bell"></i></div>
                             <h3>מערכות אזעקה</h3>
@@ -223,7 +262,8 @@
                                 <li>חיבור מוקד אבטחה 24/7</li>
                             </ul>
                         </div>
-                        <button class="tab-btn mobile-only" data-tab="tab-4"><i class="fas fa-phone-alt"></i> מערכות אינטרקום <i class="fas fa-chevron-down ms-auto"></i></button>
+                        <button class="tab-btn mobile-only" data-tab="tab-4"><i class="fas fa-phone-alt"></i> מערכות
+                            אינטרקום <i class="fas fa-chevron-down ms-auto"></i></button>
                         <div id="tab-4" class="tab-panel">
                             <div class="panel-icon"><i class="fas fa-phone-alt"></i></div>
                             <h3>מערכות אינטרקום</h3>
@@ -234,7 +274,8 @@
                                 <li>שילוב עם קודנים ובקרת כניסה</li>
                             </ul>
                         </div>
-                        <button class="tab-btn mobile-only" data-tab="tab-5"><i class="fas fa-network-wired"></i> רשתות אינטרנט <i class="fas fa-chevron-down ms-auto"></i></button>
+                        <button class="tab-btn mobile-only" data-tab="tab-5"><i class="fas fa-network-wired"></i> רשתות
+                            אינטרנט <i class="fas fa-chevron-down ms-auto"></i></button>
                         <div id="tab-5" class="tab-panel">
                             <div class="panel-icon"><i class="fas fa-network-wired"></i></div>
                             <h3>רשתות אינטרנט</h3>
@@ -245,7 +286,8 @@
                                 <li>פתרונות רשת מתקדמים לכיסוי מלא</li>
                             </ul>
                         </div>
-                        <button class="tab-btn mobile-only" data-tab="tab-6"><i class="fas fa-volume-up"></i> מערכות כריזה וסאונד <i class="fas fa-chevron-down ms-auto"></i></button>
+                        <button class="tab-btn mobile-only" data-tab="tab-6"><i class="fas fa-volume-up"></i> מערכות
+                            כריזה וסאונד <i class="fas fa-chevron-down ms-auto"></i></button>
                         <div id="tab-6" class="tab-panel">
                             <div class="panel-icon"><i class="fas fa-volume-up"></i></div>
                             <h3>מערכות כריזה וסאונד</h3>
@@ -256,7 +298,8 @@
                                 <li>מערכות חירום וכריזת אזהרה</li>
                             </ul>
                         </div>
-                        <button class="tab-btn mobile-only" data-tab="tab-7"><i class="fas fa-user-tie"></i> שירותי יעוץ <i class="fas fa-chevron-down ms-auto"></i></button>
+                        <button class="tab-btn mobile-only" data-tab="tab-7"><i class="fas fa-user-tie"></i> שירותי יעוץ
+                            <i class="fas fa-chevron-down ms-auto"></i></button>
                         <div id="tab-7" class="tab-panel">
                             <div class="panel-icon"><i class="fas fa-user-tie"></i></div>
                             <h3>שירותי יעוץ</h3>
@@ -267,7 +310,8 @@
                                 <li>ליווי פרויקטים משלב התכנון ועד לביצוע</li>
                             </ul>
                         </div>
-                        <button class="tab-btn mobile-only" data-tab="tab-8"><i class="fas fa-tools"></i> תחזוקה ותמיכה <i class="fas fa-chevron-down ms-auto"></i></button>
+                        <button class="tab-btn mobile-only" data-tab="tab-8"><i class="fas fa-tools"></i> תחזוקה ותמיכה
+                            <i class="fas fa-chevron-down ms-auto"></i></button>
                         <div id="tab-8" class="tab-panel">
                             <div class="panel-icon"><i class="fas fa-tools"></i></div>
                             <h3>תחזוקה ותמיכה</h3>
@@ -278,7 +322,8 @@
                                 <li>שדרוג והרחבת מערכות קיימות</li>
                             </ul>
                         </div>
-                        <button class="tab-btn mobile-only" data-tab="tab-9"><i class="fas fa-mobile-alt"></i> ניהול חכם <i class="fas fa-chevron-down ms-auto"></i></button>
+                        <button class="tab-btn mobile-only" data-tab="tab-9"><i class="fas fa-mobile-alt"></i> ניהול חכם
+                            <i class="fas fa-chevron-down ms-auto"></i></button>
                         <div id="tab-9" class="tab-panel">
                             <div class="panel-icon"><i class="fas fa-mobile-alt"></i></div>
                             <h3>ניהול חכם</h3>
@@ -298,22 +343,38 @@
                 <h2 class="section-title">העבודה שלנו</h2>
                 <div class="carousel-container" dir="ltr">
                     <div class="carousel-track" id="gallery-track">
-                        <div class="gallery-item"><img src="img/work/1.png" alt="עבודת התקנה 1" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/2.jpeg" alt="עבודת התקנה 2" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/3.jpeg" alt="עבודת התקנה 3" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/4.jpeg" alt="עבודת התקנה 4" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/5.jpeg" alt="עבודת התקנה 5" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/6.jpeg" alt="עבודת התקנה 6" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/7.jpeg" alt="עבודת התקנה 7" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/8.jpeg" alt="עבודת התקנה 8" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/9.jpeg" alt="עבודת התקנה 9" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/10.jpeg" alt="עבודת התקנה 10" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/11.jpeg" alt="עבודת התקנה 11" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/12.jpeg" alt="עבודת התקנה 12" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/13.jpeg" alt="עבודת התקנה 13" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/14.jpeg" alt="עבודת התקנה 14" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/15.jpeg" alt="עבודת התקנה 15" loading="lazy" decoding="async"></div>
-                        <div class="gallery-item"><img src="img/work/16.jpeg" alt="עבודת התקנה 16" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/1.png" alt="עבודת התקנה 1" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/2.jpeg" alt="עבודת התקנה 2" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/3.jpeg" alt="עבודת התקנה 3" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/4.jpeg" alt="עבודת התקנה 4" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/5.jpeg" alt="עבודת התקנה 5" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/6.jpeg" alt="עבודת התקנה 6" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/7.jpeg" alt="עבודת התקנה 7" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/8.jpeg" alt="עבודת התקנה 8" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/9.jpeg" alt="עבודת התקנה 9" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/10.jpeg" alt="עבודת התקנה 10" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/11.jpeg" alt="עבודת התקנה 11" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/12.jpeg" alt="עבודת התקנה 12" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/13.jpeg" alt="עבודת התקנה 13" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/14.jpeg" alt="עבודת התקנה 14" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/15.jpeg" alt="עבודת התקנה 15" loading="lazy"
+                                decoding="async"></div>
+                        <div class="gallery-item"><img src="img/work/16.jpeg" alt="עבודת התקנה 16" loading="lazy"
+                                decoding="async"></div>
                     </div>
                 </div>
             </div>
@@ -323,10 +384,12 @@
                 <div class="about-content hidden">
                     <h2 class="section-title text-right">אודות החברה</h2>
                     <p class="about-text">
-                        <strong>אופיר פתרונות אבטחה</strong> מציעה פתרונות אבטחה ותקשורת, מתמחים בשירותים מקצועיים ומתקדמים בכלל מערכות המתח הנמוך.
+                        <strong>אופיר פתרונות אבטחה</strong> מציעה פתרונות אבטחה ותקשורת, מתמחים בשירותים מקצועיים
+                        ומתקדמים בכלל מערכות המתח הנמוך.
                     </p>
                     <p class="about-text">
-                        אנו מספקים פתרונות אבטחה מותאמים אישית לבתים, עסקים, מוסדות ומפעלים, עם דגש על טכנולוגיות מתקדמות ושירות אמין ומקצועי.
+                        אנו מספקים פתרונות אבטחה מותאמים אישית לבתים, עסקים, מוסדות ומפעלים, עם דגש על טכנולוגיות
+                        מתקדמות ושירות אמין ומקצועי.
                     </p>
                     <div class="counters-grid">
                         <div class="counter-box">
@@ -348,56 +411,115 @@
                     </div>
                 </div>
                 <div class="about-image-wrapper hidden">
-                    <svg viewBox="0 0 400 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="animated-camera-svg">
+                    <svg viewBox="-100 -80 650 500" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                        class="animated-camera-svg">
                         <defs>
-                            <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#2a2a2a" />
-                                <stop offset="100%" stop-color="#0a0a0a" />
+                            <!-- Hikvision White Body Gradient -->
+                            <linearGradient id="hikBody" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="50%" stop-color="#f0f0f0" />
+                                <stop offset="100%" stop-color="#d1d1d1" />
                             </linearGradient>
-                            <linearGradient id="lensGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#0ea5e9" />
-                                <stop offset="100%" stop-color="#020617" />
-                            </linearGradient>
-                            <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="rgba(14, 165, 233, 0.8)" />
-                                <stop offset="100%" stop-color="rgba(14, 165, 233, 0)" />
+
+                            <!-- Lens Glass (Deep Black) -->
+                            <radialGradient id="hikLens" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#1a1a1a" />
+                                <stop offset="70%" stop-color="#050505" />
+                                <stop offset="100%" stop-color="#000" />
                             </radialGradient>
+
+                            <!-- Subtle Reflection -->
+                            <linearGradient id="hikReflect" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="rgba(255,255,255,0.4)" />
+                                <stop offset="50%" stop-color="rgba(255,255,255,0)" />
+                            </linearGradient>
+
+                            <!-- Shadow Filter -->
+                            <filter id="boxShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="15" stdDeviation="20" flood-opacity="0.4" />
+                            </filter>
                         </defs>
 
-                        <!-- Wall Base -->
-                        <rect x="20" y="100" width="30" height="200" rx="10" fill="#111" stroke="#333" stroke-width="2"/>
-                        <rect x="50" y="180" width="30" height="40" fill="#050505" stroke="#222" stroke-width="1"/>
-                        
-                        <!-- Arm -->
-                        <path d="M 80 185 L 180 185 L 180 215 L 80 215 Z" fill="url(#bodyGrad)" stroke="#222" stroke-width="2"/>
-                        <!-- Pivot Joint -->
-                        <circle cx="180" cy="200" r="25" fill="#111" stroke="#0ea5e9" stroke-width="2"/>
-                        <circle cx="180" cy="200" r="10" fill="#333"/>
+                        <!-- Wall Mount Base (Professional Junction Box DS-1280ZJ) -->
+                        <g class="camera-base" filter="url(#boxShadow)">
+                            <!-- Box Body (Depth) -->
+                            <path d="M -20 130 L 60 130 L 80 150 L 80 250 L 60 270 L -20 270 Z" fill="#ccc"
+                                stroke="#bbb" stroke-width="1" />
+                            <!-- Box Front Face -->
+                            <path d="M 0 140 L 60 140 L 75 155 L 75 245 L 60 260 L 0 260 Z" fill="#fcfcfc" stroke="#ddd"
+                                stroke-width="1" />
 
-                        <!-- Rotating Camera Group -->
+                            <!-- Side Gland / Cable Entry -->
+                            <rect x="25" y="260" width="20" height="15" fill="#333" rx="2" />
+                            <path d="M 30 275 L 30 300" stroke="#444" stroke-width="6" stroke-linecap="round"
+                                opacity="0.6" />
+
+                            <!-- Front Mounting Plate (Circle for Arm) -->
+                            <ellipse cx="65" cy="200" rx="45" ry="45" fill="#f0f0f0" stroke="#ddd" stroke-width="1" />
+                            <ellipse cx="65" cy="200" rx="35" ry="35" fill="#eee" stroke="#ccc" stroke-width="1" />
+
+                            <!-- Box Screws -->
+                            <circle cx="10" cy="150" r="3" fill="#aaa" />
+                            <circle cx="10" cy="250" r="3" fill="#aaa" />
+                            <circle cx="65" cy="155" r="2.5" fill="#bbb" />
+                            <circle cx="65" cy="245" r="2.5" fill="#bbb" />
+                        </g>
+
+                        <!-- Articulated Mounting Bracket -->
+                        <g class="camera-arm">
+                            <!-- Base Connector -->
+                            <rect x="65" y="185" width="20" height="30" rx="2" fill="#ddd" stroke="#bbb" />
+                            <!-- Main Arm -->
+                            <path d="M 85 185 L 145 185 L 145 215 L 85 215 Z" fill="#f0f0f0" stroke="#ccc"
+                                stroke-width="1" />
+                            <!-- Adjustment Joints -->
+                            <circle cx="145" cy="200" r="22" fill="#e8e8e8" stroke="#ccc" stroke-width="1" />
+                            <circle cx="145" cy="200" r="8" fill="#ddd" stroke="#bbb" />
+                        </g>
+
+                        <!-- Hikvision-style Bullet Housing -->
                         <g class="camera-head">
-                            <!-- Camera Body -->
-                            <path d="M 180 160 L 320 160 Q 340 160 340 180 L 340 220 Q 340 240 320 240 L 180 240 Z" fill="url(#bodyGrad)" stroke="#444" stroke-width="2"/>
-                            
-                            <!-- Camera Hood/Shield -->
-                            <path d="M 160 145 L 350 145 L 340 160 L 180 160 Z" fill="#000"/>
+                            <!-- Main Cylindrical Body -->
+                            <path d="M 145 155 L 345 155 L 345 245 L 145 245 Z" fill="url(#hikBody)" stroke="#ccc"
+                                stroke-width="1" />
+                            <path d="M 145 155 Q 125 155 125 200 Q 125 245 145 245 Z" fill="#e0e0e0" stroke="#ccc"
+                                stroke-width="1" />
 
-                            <!-- Lens Casing -->
-                            <rect x="340" y="170" width="15" height="60" rx="5" fill="#050505" stroke="#222" stroke-width="2"/>
+                            <!-- Sunshield (Top Cover) -->
+                            <path d="M 120 145 L 365 145 L 360 160 L 125 160 Z" fill="#fcfcfc" stroke="#ccc"
+                                stroke-width="1" />
+                            <rect x="205" y="140" width="80" height="5" rx="2" fill="#eee" stroke="#ddd" />
 
-                            <!-- The Lens (Zooms) -->
-                            <g class="camera-lens">
-                                <!-- Outer Glass -->
-                                <ellipse cx="355" cy="200" rx="10" ry="22" fill="url(#lensGrad)"/>
-                                <!-- Inner pupil -->
-                                <ellipse class="pupil" cx="355" cy="200" rx="4" ry="8" fill="#fff"/>
-                                <!-- Glow effect -->
-                                <ellipse class="lens-glow" cx="355" cy="200" rx="15" ry="25" fill="url(#glowGrad)"/>
+                            <!-- Front Faceplate (Perspective Fix) -->
+                            <g class="front-face">
+                                <ellipse cx="345" cy="200" rx="12" ry="45" fill="#0a0a0a" />
+                                <g class="camera-lens">
+                                    <ellipse cx="347" cy="200" rx="9" ry="25" fill="url(#hikLens)" stroke="#222"
+                                        stroke-width="1" />
+                                    <ellipse cx="347" cy="200" rx="4" ry="12" fill="#000" />
+                                    <ellipse cx="347" cy="200" rx="2" ry="6" fill="#111" />
+                                    <ellipse cx="345" cy="192" rx="2" ry="5" fill="url(#hikReflect)" opacity="0.4"
+                                        transform="rotate(-15 345 192)" />
+                                </g>
+                                <circle cx="343" cy="165" r="2" fill="#ff0000" class="dome-recording-led" />
                             </g>
 
-                            <!-- Scanner Beam -->
-                            <polygon class="scanner-beam" points="355,200 500,20 500,380" fill="url(#glowGrad)"/>
+                            <!-- Branding -->
+                            <g transform="skewY(-2) translate(10, 10)">
+                                <text x="180" y="210" font-family="Arial" font-size="14" font-weight="bold" fill="#bbb"
+                                    opacity="0.5">OFIR</text>
+                                <text x="180" y="222" font-family="Arial" font-size="7" fill="#ccc"
+                                    opacity="0.5">SECURITY SOLUTIONS</text>
+                            </g>
+
+                            <!-- Smart Scan Beam -->
+                            <path class="scanner-beam" d="M 350 200 L 580 50 L 580 350 Z"
+                                fill="rgba(14, 165, 233, 0.04)" />
                         </g>
+
+                        <!-- Cable Grommet -->
+                        <path d="M 40 200 L 10 200" stroke="#333" stroke-width="4" stroke-linecap="round"
+                            opacity="0.5" />
                     </svg>
                 </div>
             </div>
@@ -406,11 +528,11 @@
             <div class="container slide-from-left">
                 <h2 class="section-title">צור קשר</h2>
                 <div class="contact-container">
-                    
+
                     <div class="contact-info hidden">
                         <h3>פרטי התקשרות</h3>
                         <p class="contact-subtitle">אנחנו כאן לכל שאלה, ייעוץ או הצעת מחיר. נשמח לעמוד לשירותכם.</p>
-                        
+
                         <ul class="info-list">
                             <li>
                                 <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
@@ -444,7 +566,7 @@
                     </div>
 
                     <div class="contact-form-wrapper hidden">
-                        <form class="contact-form" action="#" method="POST">
+                        <form id="contactForm" class="contact-form" action="#" method="POST">
                             <div class="form-group">
                                 <label for="fullName">שם מלא</label>
                                 <input type="text" id="fullName" name="fullName" required placeholder="הכנס שם מלא">
@@ -463,9 +585,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="message">הפניה שלך</label>
-                                <textarea id="message" name="message" rows="4" required placeholder="איך נוכל לעזור?"></textarea>
+                                <textarea id="message" name="message" rows="4" required
+                                    placeholder="איך נוכל לעזור?"></textarea>
                             </div>
-                            <button type="submit" class="submit-btn">
+                            <div id="statusMessage"></div>
+                            <button type="submit" id="submitBtn" class="submit-btn">
                                 <span class="btn-text">שלח פנייה</span>
                                 <i class="fas fa-paper-plane"></i>
                             </button>
@@ -483,9 +607,10 @@
                 <a href="#" class="footer-logo">
                     <img src="img/logo.PNG" alt="Ofir Security Solutions Logo" class="logo">
                 </a>
-                <p class="footer-desc">פתרונות אבטחה ותקשורת מתקדמים. נותנים לכם שקט נפשי עם טכנולוגיה עדכנית ושירות ללא פשרות.</p>
+                <p class="footer-desc">פתרונות אבטחה ותקשורת מתקדמים. נותנים לכם שקט נפשי עם טכנולוגיה עדכנית ושירות ללא
+                    פשרות.</p>
             </div>
-            
+
             <div class="footer-col">
                 <h4 class="footer-title">ניווט מהיר</h4>
                 <ul class="footer-links">
@@ -496,7 +621,7 @@
                     <li><a href="#contact">צור קשר</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-col">
                 <h4 class="footer-title">מידע חשוב</h4>
                 <ul class="footer-links">
@@ -505,14 +630,18 @@
                     <li><a href="legal.html#terms">תנאי שימוש</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-col">
                 <h4 class="footer-title">עקבו אחרינו</h4>
                 <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://wa.me/972528130545" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/ofirsecuritysolutions/?rdid=56J68rltvhrnOVU3"
+                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/ofir_security_solutions/" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@ofir_security_solutions?_t=ZS-8xLUu1s9gcj&_r=1"
+                        aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/972528130545" target="_blank" aria-label="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
@@ -541,19 +670,33 @@
             <div class="a11y-group">
                 <span class="a11y-label">גודל טקסט:</span>
                 <div class="a11y-flex">
-                    <button id="a11y-text-inc" class="a11y-btn" aria-label="הגדל טקסט"><i class="fas fa-search-plus"></i></button>
-                    <button id="a11y-text-dec" class="a11y-btn" aria-label="הקטן טקסט"><i class="fas fa-search-minus"></i></button>
+                    <button id="a11y-text-inc" class="a11y-btn" aria-label="הגדל טקסט"><i
+                            class="fas fa-search-plus"></i></button>
+                    <button id="a11y-text-dec" class="a11y-btn" aria-label="הקטן טקסט"><i
+                            class="fas fa-search-minus"></i></button>
                 </div>
             </div>
-            <button id="a11y-font" class="a11y-btn-toggle" aria-label="גופן קריא"><i class="fas fa-font"></i> גופן קריא</button>
-            <button id="a11y-contrast" class="a11y-btn-toggle" aria-label="ניגודיות גבוהה"><i class="fas fa-adjust"></i> ניגודיות גבוהה</button>
-            <button id="a11y-links" class="a11y-btn-toggle" aria-label="הדגש קישורים"><i class="fas fa-link"></i> הדגש קישורים</button>
-            <button id="a11y-anim" class="a11y-btn-toggle" aria-label="עצור אנימציות"><i class="fas fa-pause-circle"></i> עצור אנימציות</button>
-            <button id="a11y-reset" class="a11y-btn-reset" aria-label="איפוס הגדרות נגישות"><i class="fas fa-sync-alt"></i> איפוס נגישות</button>
+            <button id="a11y-font" class="a11y-btn-toggle" aria-label="גופן קריא"><i class="fas fa-font"></i> גופן
+                קריא</button>
+            <button id="a11y-contrast" class="a11y-btn-toggle" aria-label="ניגודיות גבוהה"><i class="fas fa-adjust"></i>
+                ניגודיות גבוהה</button>
+            <button id="a11y-links" class="a11y-btn-toggle" aria-label="הדגש קישורים"><i class="fas fa-link"></i> הדגש
+                קישורים</button>
+            <button id="a11y-anim" class="a11y-btn-toggle" aria-label="עצור אנימציות"><i
+                    class="fas fa-pause-circle"></i> עצור אנימציות</button>
+            <button id="a11y-reset" class="a11y-btn-reset" aria-label="איפוס הגדרות נגישות"><i
+                    class="fas fa-sync-alt"></i> איפוס נגישות</button>
         </div>
     </div>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            // Initialize EmailJS with your Public Key
+            emailjs.init("KiEClqCY2EzRuIfMM"); 
+        })();
+    </script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
     <script src="script.js"></script>
@@ -564,4 +707,5 @@
         <img class="lightbox-content" id="lightbox-img">
     </div>
 </body>
+
 </html>
