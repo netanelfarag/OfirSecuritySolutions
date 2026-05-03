@@ -120,6 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let scrollLeft;
         let scrollSpeed = 0.8; // Auto-scroll speed
         let currentScroll = 0;
+        let trackHalfWidth = galleryTrack.scrollWidth / 2;
+
+        // Update width on resize
+        window.addEventListener('resize', () => {
+            trackHalfWidth = galleryTrack.scrollWidth / 2;
+        });
 
         // 3. Manual Drag Logic (Mouse + Touch)
         const startDragging = (pageX) => {
@@ -132,8 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const stopDragging = () => {
             if (!isDown) return;
-            isDown = true; // Briefly keep true to prevent jump
-            setTimeout(() => isDown = false, 10);
+            isDown = false;
             galleryContainer.classList.remove('grabbing');
             currentScroll = galleryContainer.scrollLeft;
         };
@@ -148,26 +153,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Mouse Events
         galleryContainer.addEventListener('mousedown', (e) => startDragging(e.pageX));
-        galleryContainer.addEventListener('mouseleave', () => {
-            isDown = false;
-            galleryContainer.classList.remove('grabbing');
-        });
+        galleryContainer.addEventListener('mouseleave', stopDragging);
         galleryContainer.addEventListener('mouseup', stopDragging);
         galleryContainer.addEventListener('mousemove', (e) => {
-            if (isDown) e.preventDefault();
-            moveDragging(e.pageX);
+            if (isDown) {
+                e.preventDefault();
+                moveDragging(e.pageX);
+            }
         });
 
         // Touch Events
         galleryContainer.addEventListener('touchstart', (e) => startDragging(e.touches[0].pageX), { passive: true });
         galleryContainer.addEventListener('touchend', stopDragging);
         galleryContainer.addEventListener('touchmove', (e) => {
-            // Only prevent default if we're moving horizontally enough to distinguish from vertical scroll
-            // For now, let's keep it simple. If we're dragging the carousel, we want to scroll it.
-            moveDragging(e.touches[0].pageX);
+            if (isDown) moveDragging(e.touches[0].pageX);
         }, { passive: true });
 
-        // 3b. Disable Wheel Scroll & Image Drag (Manual scroll ONLY by pressing)
+        // 3b. Disable Wheel Scroll & Image Drag
         galleryContainer.addEventListener('wheel', (e) => {
             e.preventDefault();
         }, { passive: false });
@@ -182,8 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentScroll += scrollSpeed;
                 
                 // Infinite Reset Logic
-                const halfWidth = galleryTrack.scrollWidth / 2;
-                if (currentScroll >= halfWidth) {
+                if (currentScroll >= trackHalfWidth) {
                     currentScroll = 0;
                 }
                 
@@ -305,6 +306,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const submitBtn = document.getElementById('submitBtn');
             const formData = new FormData(contactForm);
+
+            // Honeypot check
+            if (formData.get("honeypot")) {
+                console.warn("Spam detected");
+                return;
+            }
 
             // Prepare template parameters matching EmailJS template
             const templateParams = {
