@@ -901,6 +901,8 @@ body {
     position: relative;
     z-index: 10;
     overflow: hidden;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
 }
 
 .carousel-container {
@@ -912,6 +914,7 @@ body {
     scroll-behavior: auto; /* Auto for smoother JS control */
     -webkit-overflow-scrolling: touch;
     cursor: grab;
+    will-change: scroll-position;
 }
 
 .carousel-container.grabbing {
@@ -924,6 +927,7 @@ body {
     width: max-content;
     animation: none;
     padding: 0;
+    will-change: transform;
 }
 
 .gallery-item {
@@ -956,6 +960,7 @@ body {
     user-select: none;
     -webkit-user-drag: none;
     pointer-events: none; /* This ensures the click/drag goes to the container */
+    will-change: transform, filter;
 }
 
 .carousel-container {
@@ -1054,6 +1059,8 @@ body {
     background-color: transparent;
     position: relative;
     z-index: 10;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
 }
 
 .about-container {

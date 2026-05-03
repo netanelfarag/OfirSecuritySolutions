@@ -18,19 +18,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // --- Navbar Scroll Effect ---
+    // --- Navbar Scroll Effect (Throttled) ---
     const navbar = document.querySelector('.navbar');
     const scrollIndicator = document.querySelector('.scroll-indicator');
     
+    let isScrolling = false;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-            if(scrollIndicator) scrollIndicator.style.opacity = '0';
-        } else {
-            navbar.classList.remove('scrolled');
-            if(scrollIndicator) scrollIndicator.style.opacity = '0.8';
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    if(scrollIndicator) scrollIndicator.style.opacity = '0';
+                } else {
+                    navbar.classList.remove('scrolled');
+                    if(scrollIndicator) scrollIndicator.style.opacity = '0.8';
+                }
+                isScrolling = false;
+            });
+            isScrolling = true;
         }
-    });
+    }, { passive: true });
     
     // --- Mobile Menu Logic ---
     const menuToggle = document.getElementById('mobile-menu');
@@ -243,9 +250,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const cursorGlow = document.querySelector('.cursor-glow');
     if (cursorGlow) {
+        let isMovingCursor = false;
         document.addEventListener('mousemove', (e) => {
-            cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-        });
+            if (!isMovingCursor) {
+                window.requestAnimationFrame(() => {
+                    cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                    isMovingCursor = false;
+                });
+                isMovingCursor = true;
+            }
+        }, { passive: true });
     }
 
     // --- Services Tabs ---
@@ -278,18 +292,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Snap logic
                     setTimeout(() => {
-                        const offset = 130; // Account for fixed navbar, snapped lower for more breathing room
-                        
-                        // On mobile, we snap to the button (title). On desktop, we snap to the panel.
+                        const offset = 130; // Account for fixed navbar
                         const targetElement = (window.innerWidth <= 992) ? btn : panelsToActivate;
                         
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+                        if (window.lenis) {
+                            window.lenis.scrollTo(targetElement, {
+                                offset: -offset,
+                                duration: 1
+                            });
+                        } else {
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
                     }, 50);
                 }
             });
