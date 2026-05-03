@@ -102,14 +102,98 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // --- Gallery Carousel ---
+    // --- Gallery Carousel (Hybrid Auto + Manual Grab) ---
+    const galleryContainer = document.querySelector('.carousel-container');
     const galleryTrack = document.getElementById('gallery-track');
-    if (galleryTrack) {
+    
+    if (galleryContainer && galleryTrack) {
+        // 1. Infinite Cloning
         const items = Array.from(galleryTrack.children);
         items.forEach(item => {
             const clone = item.cloneNode(true);
             galleryTrack.appendChild(clone);
         });
+
+        // 2. State Variables
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let scrollSpeed = 0.8; // Auto-scroll speed
+        let currentScroll = 0;
+
+        // 3. Manual Drag Logic (Mouse + Touch)
+        const startDragging = (pageX) => {
+            isDown = true;
+            galleryContainer.classList.add('grabbing');
+            startX = pageX - galleryContainer.offsetLeft;
+            scrollLeft = galleryContainer.scrollLeft;
+            currentScroll = galleryContainer.scrollLeft;
+        };
+
+        const stopDragging = () => {
+            if (!isDown) return;
+            isDown = true; // Briefly keep true to prevent jump
+            setTimeout(() => isDown = false, 10);
+            galleryContainer.classList.remove('grabbing');
+            currentScroll = galleryContainer.scrollLeft;
+        };
+
+        const moveDragging = (pageX) => {
+            if (!isDown) return;
+            const x = pageX - galleryContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            galleryContainer.scrollLeft = scrollLeft - walk;
+            currentScroll = galleryContainer.scrollLeft;
+        };
+
+        // Mouse Events
+        galleryContainer.addEventListener('mousedown', (e) => startDragging(e.pageX));
+        galleryContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            galleryContainer.classList.remove('grabbing');
+        });
+        galleryContainer.addEventListener('mouseup', stopDragging);
+        galleryContainer.addEventListener('mousemove', (e) => {
+            if (isDown) e.preventDefault();
+            moveDragging(e.pageX);
+        });
+
+        // Touch Events
+        galleryContainer.addEventListener('touchstart', (e) => startDragging(e.touches[0].pageX), { passive: true });
+        galleryContainer.addEventListener('touchend', stopDragging);
+        galleryContainer.addEventListener('touchmove', (e) => {
+            // Only prevent default if we're moving horizontally enough to distinguish from vertical scroll
+            // For now, let's keep it simple. If we're dragging the carousel, we want to scroll it.
+            moveDragging(e.touches[0].pageX);
+        }, { passive: true });
+
+        // 3b. Disable Wheel Scroll & Image Drag (Manual scroll ONLY by pressing)
+        galleryContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+
+        galleryTrack.addEventListener('dragstart', (e) => {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+
+        // 4. Smooth Auto-Scroll Loop
+        function step() {
+            if (!isDown) {
+                currentScroll += scrollSpeed;
+                
+                // Infinite Reset Logic
+                const halfWidth = galleryTrack.scrollWidth / 2;
+                if (currentScroll >= halfWidth) {
+                    currentScroll = 0;
+                }
+                
+                galleryContainer.scrollLeft = currentScroll;
+            }
+            requestAnimationFrame(step);
+        }
+
+        // Start the loop
+        requestAnimationFrame(step);
     }
 
     // --- Lightbox ---
@@ -171,15 +255,42 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 const targetId = btn.getAttribute('data-tab');
                 const isActive = btn.classList.contains('active');
+                
+                // On mobile, if clicking an already active tab, we just close it
                 if (isActive && window.innerWidth <= 992) {
                     btn.classList.remove('active');
                     document.getElementById(targetId).classList.remove('active');
                     return;
                 }
+
+                // Deactivate all
                 tabBtns.forEach(b => b.classList.remove('active'));
                 tabPanels.forEach(p => p.classList.remove('active'));
-                document.querySelectorAll(`.tab-btn[data-tab="${targetId}"]`).forEach(b => b.classList.add('active'));
-                document.getElementById(targetId).classList.add('active');
+
+                // Activate selected
+                const panelsToActivate = document.getElementById(targetId);
+                const buttonsToActivate = document.querySelectorAll(`.tab-btn[data-tab="${targetId}"]`);
+                
+                buttonsToActivate.forEach(b => b.classList.add('active'));
+                if (panelsToActivate) {
+                    panelsToActivate.classList.add('active');
+                    
+                    // Snap logic
+                    setTimeout(() => {
+                        const offset = 130; // Account for fixed navbar, snapped lower for more breathing room
+                        
+                        // On mobile, we snap to the button (title). On desktop, we snap to the panel.
+                        const targetElement = (window.innerWidth <= 992) ? btn : panelsToActivate;
+                        
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 50);
+                }
             });
         });
     }

@@ -15,6 +15,21 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 html {
     scroll-behavior: auto;
 }
@@ -23,7 +38,6 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-he);
-    overflow-x: hidden;
 }
 
 /* Animations */
@@ -583,7 +597,7 @@ body {
 
 /* Services Section */
 .services-section {
-    padding: 100px 20px;
+    padding: clamp(60px, 10vw, 100px) 20px;
     background-color: transparent;
     position: relative;
     z-index: 10;
@@ -595,9 +609,9 @@ body {
 }
 
 .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.8rem, 6vw, 3rem);
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: clamp(40px, 8vw, 60px);
     position: relative;
     display: block;
     width: fit-content;
@@ -703,16 +717,25 @@ body {
 
 .carousel-container {
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden; /* Changed to hidden to control via JS */
+    overflow-y: hidden;
     position: relative;
     padding: 20px 0;
+    scroll-behavior: auto; /* Auto for smoother JS control */
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+}
+
+.carousel-container.grabbing {
+    cursor: grabbing;
 }
 
 .carousel-track {
     display: flex;
     gap: 20px;
     width: max-content;
-    animation: scroll-carousel 80s linear infinite;
+    animation: none;
+    padding: 0;
 }
 
 .gallery-item {
@@ -742,6 +765,14 @@ body {
     object-fit: cover;
     transition: transform 0.5s ease, filter 0.5s ease;
     filter: brightness(0.7) grayscale(20%);
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none; /* This ensures the click/drag goes to the container */
+}
+
+.carousel-container {
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .gallery-item:hover img {
@@ -1183,8 +1214,9 @@ button:focus-visible {
 /* WhatsApp Button */
 .whatsapp-btn {
     position: fixed;
-    bottom: 100px;
-    right: 30px;
+    bottom: 30px;
+    left: 30px;
+    right: auto;
     width: 60px;
     height: 60px;
     background-color: #25d366;
@@ -1590,6 +1622,41 @@ button:focus-visible {
     .services-tabs-menu {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    /* Small Screen Specifics */
+    .whatsapp-btn, .a11y-toggle-btn {
+        width: 50px;
+        height: 50px;
+        left: 20px;
+    }
+
+    .whatsapp-btn {
+        bottom: 20px;
+        font-size: 1.8rem;
+    }
+
+    .a11y-toggle-btn {
+        bottom: 80px;
+        font-size: 1.6rem;
+    }
+
+    .a11y-menu {
+        width: calc(100vw - 40px);
+        left: 20px;
+        bottom: 140px;
+    }
+
+    .counter-value, .counter-suffix {
+        font-size: 2.2rem;
+    }
+
+    .counters-grid {
+        gap: 15px;
+    }
+
+    .contact-form-wrapper {
+        padding: 25px 20px;
+    }
 }
 
 .mobile-only {
@@ -1764,39 +1831,44 @@ button:focus-visible {
     .hero-section {
         height: auto;
         min-height: 100vh;
+        padding-top: 100px;
+        padding-bottom: 60px;
     }
 
     .hero-content-wrapper {
+        flex-direction: column-reverse; /* Put visual first on mobile sometimes, or keep text first? Text first usually better for SEO/UX. Let's keep column but adjust gaps */
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding-top: 120px;
+        padding-top: 60px;
         padding-bottom: 40px;
-        gap: 25px;
+        gap: 40px;
     }
 
     .hero-text-side {
         align-items: center;
         text-align: center;
+        order: 1;
     }
 
     .hero-visual-side {
         flex: 0 0 auto;
-        width: 260px;
-        max-width: 260px;
+        width: 280px;
+        max-width: 80%;
         margin: 0 auto;
+        order: 2;
     }
 
     .main-title {
-        font-size: clamp(1.6rem, 7vw, 2.8rem) !important;
-        margin-top: 0;
+        font-size: clamp(1.8rem, 8vw, 3rem) !important;
+        margin-bottom: 15px;
         line-height: 1.2;
     }
 
     .slogan {
-        font-size: 1.2rem !important;
-        margin-bottom: 20px !important;
+        font-size: clamp(1rem, 4vw, 1.4rem) !important;
+        margin-bottom: 25px !important;
     }
 
     .dome-camera-svg {
@@ -1808,8 +1880,9 @@ button:focus-visible {
 /* Accessibility Styles */
 .a11y-toggle-btn {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 100px;
+    left: 30px;
+    right: auto;
     width: 60px;
     height: 60px;
     background-color: var(--color-accent);
@@ -1835,7 +1908,8 @@ button:focus-visible {
 .a11y-menu {
     position: fixed;
     bottom: 170px;
-    right: 30px;
+    left: 30px;
+    right: auto;
     width: 320px;
     background: rgba(10, 10, 10, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1847,7 +1921,7 @@ button:focus-visible {
     flex-direction: column;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transform-origin: bottom right;
+    transform-origin: bottom left;
 }
 
 .a11y-menu.hidden-menu {
